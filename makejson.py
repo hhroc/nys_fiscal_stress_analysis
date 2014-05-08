@@ -39,6 +39,7 @@ if __name__ == '__main__':
     # handle not filed and inconclusive cases
     contents = contents.replace('Not filed\n','Not filed\nN/A\nN/A\nN/A\n')
     contents = contents.replace('Inconclusive\n','Inconclusive\nN/A\nN/A\nN/A\n')
+    contents = contents.replace('--------\n','') # page break
 
     # get each line
     lines = contents.split('\n')
