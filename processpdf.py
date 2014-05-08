@@ -85,11 +85,11 @@ if __name__ == '__main__':
 
         for district in districts:
 
-            fiscalscore = district['fiscal_score']
+            fiscalscore = ''
             if district['fiscal_score'] != 'N/A':
                 fiscalscore = str(float(district['fiscal_score'].replace('%',''))/100.0)
 
-            environmentalscore = district['environmental_score']
+            environmentalscore = ''
             if district['environmental_score'] != 'N/A':
                 environmentalscore = str(float(district['environmental_score'].replace('%',''))/100.0)
 
