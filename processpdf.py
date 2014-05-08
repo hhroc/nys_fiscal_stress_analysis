@@ -77,13 +77,22 @@ if __name__ == '__main__':
                   'region,' + \
                   'fiscal year end,' + \
                   'type of stress,' + \
-                  'fiscal score,' + \
+                  'fiscal score (%),' + \
                   'environmental rating,' + \
-                  'environmental score,' + \
+                  'environmental score (%),' + \
                   'snapshot date,\n'
         f.write(headers)
 
         for district in districts:
+
+            fiscalscore = district['fiscal_score']
+            if district['fiscal_score'] != 'N/A':
+                fiscalscore = str(float(district['fiscal_score'].replace('%',''))/100.0)
+
+            environmentalscore = district['environmental_score']
+            if district['environmental_score'] != 'N/A':
+                environmentalscore = str(float(district['environmental_score'].replace('%',''))/100.0)
+
             line = '' + \
                 district['name'] + ',' + \
                 district['class'] + ',' + \
@@ -91,10 +100,11 @@ if __name__ == '__main__':
                 district['region'] + ',' + \
                 district['fiscal_year_end'] + ',' + \
                 district['type_of_stress'] + ',' + \
-                district['fiscal_score'] + ',' + \
+                fiscalscore + ',' + \
                 district['environmental_rating'] + ',' + \
-                district['environmental_score'] + ',' + \
+                environmentalscore + ',' + \
                 district['snapshot_date'] + ',\n'
+
             f.write(line)
 
     print "Done."
